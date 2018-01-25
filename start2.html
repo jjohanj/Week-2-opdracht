@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <link rel="stylesheet" type="text/css" href="style.css">
+ <title>Document</title>
+</head>
+<body>
+
+    <div id="demo"></div>
+
+    <input name="mykey" type="text" id="myText">
+    <input name="value" type="text" id="myName">
+
+    <button type="button" onclick="message(); loadText();">Sava data, Load messages</button>
+    <button type="button" onclick="loadText()">Load messages</button>
+
+
+  <script>
+
+  function loadText() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "tekst.txt", false);
+    xhttp.send();
+    document.getElementById("demo").innerHTML = xhttp.responseText;
+  }
+
+  function message () {
+    var x = document.getElementById("myText").value;
+    var y = document.getElementById("myName").value;
+    console.log (x);
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("PUT", "rest2.php?mykey=" + x + "&value=" + y, false);
+    xhttp.send();
+
+  }
+    </script>
+
+</body>
+</html>
