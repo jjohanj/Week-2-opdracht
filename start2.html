@@ -8,31 +8,37 @@
 </head>
 <body>
 
+<div id="main">
+  <h2> Chat </h2>
     <div id="demo"></div>
 
-    <input name="mykey" type="text" id="myText">
-    <input name="value" type="text" id="myName">
+    <input placeholder="name" name="mykey" type="text" id="myText">
+    <input placeholder="message" name="value" type="text" id="myName"></br>
+    <button type="button" onclick="message(); loadText();">Sava data, Load all content</button>
 
-    <button type="button" onclick="message(); loadText();">Sava data, Load messages</button>
-    <button type="button" onclick="loadText()">Load messages</button>
-
+</div>
 
   <script>
+
+  setInterval(loadText, 3000);
 
   function loadText() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "tekst.txt", false);
     xhttp.send();
+
+
     document.getElementById("demo").innerHTML = xhttp.responseText;
+
   }
 
-  function message () {
-    var x = document.getElementById("myText").value;
-    var y = document.getElementById("myName").value;
-    console.log (x);
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("PUT", "rest2.php?mykey=" + x + "&value=" + y, false);
-    xhttp.send();
+    function message () {
+      var x = document.getElementById("myText").value;
+      var y = document.getElementById("myName").value;
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("PUT", "rest2.php?mykey=" + x + "&value=" + y, false);
+      xhttp.send();
 
   }
     </script>
