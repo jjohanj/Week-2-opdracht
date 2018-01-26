@@ -3,45 +3,21 @@
 <html lang="en">
 <head>
  <meta charset="UTF-8">
+ <script src="script2.js"></script>
  <link rel="stylesheet" type="text/css" href="style.css">
  <title>Document</title>
 </head>
 <body>
 
 <div id="main">
-  <h2> Chat </h2>
+  <h2> Chatroom </h2>
     <div id="demo"></div>
 
-    <input placeholder="name" name="mykey" type="text" id="myText">
-    <input placeholder="message" name="value" type="text" id="myName"></br>
-    <button type="button" onclick="message(); loadText();">Sava data, Load all content</button>
+    <input placeholder="name" name="mykey" type="text" id="myName">
+    <input placeholder="message" name="value" type="text" id="myText"></br>
+    <button type="button" onclick="message()">Post message</button>
 
 </div>
-
-  <script>
-
-  setInterval(loadText, 1000);
-
-  function loadText() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "tekst.txt", false);
-    xhttp.send();
-
-
-    document.getElementById("demo").innerHTML = xhttp.responseText;
-
-  }
-
-    function message () {
-      var x = document.getElementById("myText").value;
-      var y = document.getElementById("myName").value;
-
-      var xhttp = new XMLHttpRequest();
-      xhttp.open("PUT", "rest2.php?mykey=" + x + "&value=" + y, false);
-      xhttp.send();
-
-  }
-    </script>
 
 </body>
 </html>

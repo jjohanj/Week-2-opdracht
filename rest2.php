@@ -6,7 +6,8 @@
 
     $myFile = "tekst.txt";
     $fh = fopen($myFile, 'a');
-    fwrite($fh, $allData . "\n");
+
+    fwrite($fh, $allData);
     fclose($fh);
 
  ?>
